@@ -4,7 +4,6 @@ class Fave extends Component {
 
   handleClick = e =>{
     e.stopPropagation()
-    console.log('Handling Fave click!')
 
     // Add this line. You'll call the function passed through props
     this.props.onFaveToggle()

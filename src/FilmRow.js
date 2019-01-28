@@ -1,26 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import FilmPoster from "./FilmPoster"
 import Fave from './Fave'
 
-class FilmRow extends Component {
-
-  render() {
+function FilmRow(props) {
     
-    const releaseYear = this.props.film.release_date.substr(0, 4);
+  const releaseYear = props.film.release_date.substr(0, 4);
 
-    return (
-      <div className="film-row" onClick={() => this.props.handleDetailsClick(this.props.film)}>
-        <FilmPoster poster_path={this.props.film.poster_path} alt={this.props.film.title} />
+  return (
+    <div className="film-row" onClick={() => props.handleDetailsClick(props.film)}>
+      <FilmPoster poster_path={props.film.poster_path} alt={props.film.title} />
 
-        <div className="film-summary">
-          <h1>{this.props.film.title}</h1>
-          <p>{releaseYear}</p>
-        </div>
-
-        <Fave onFaveToggle={() => {this.props.handleFaveToggle(this.props.film)}} isFave={this.props.isFave} />
+      <div className="film-summary">
+        <h1>{props.film.title}</h1>
+        <p>{releaseYear}</p>
       </div>
-    )
-  }
+
+      <Fave onFaveToggle={() => {props.handleFaveToggle(props.film)}} isFave={props.isFave} />
+    </div>
+  )
 }
 
 export default FilmRow;
